@@ -1,2 +1,3 @@
 django-phonenumber-field[phonenumbers]
 django-location-field
+django_seed
