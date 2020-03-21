@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'phonenumber_field',
-    'location_field.apps.DefaultConfig'
+    'location_field.apps.DefaultConfig',
+
+		'django_seed'	
 ]
 
 MIDDLEWARE = [
