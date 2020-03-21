@@ -46,7 +46,7 @@ def register_helper(request):
             helper.user = user
             helper.location = location
             helper.save()
-            return redirect('/')
+            return redirect(reverse('login'))
     else:
         user_creation_form = CustomUserCreationForm()
         helper_form = HelperCreationForm()
