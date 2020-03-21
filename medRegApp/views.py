@@ -19,17 +19,24 @@ def login(request):
     if user is not None:
         return profilepage(request, profile_id = user.id)
     else:
-        return index(request)
+        return render(request, 'loginmaske.html',
+                      {
+                          'badLogin': True
+                      })
 
 def profilepage(request, profile_id):
-    users = models.Helper.objects.all().filter(id = profile_id)
+    users = models.CustomUser.objects.all().filter(id = profile_id)
 
+    # users = models.Helper.objects.all().filter(id = profile_id)
     if len(users) == 1:
-        context = { 'user' : users[0] }
+        user = users[0]
+        context = { 'user' : user }
 
-        return render(request, 'profile.html', context)
-    else:
-        return not_found(request)
+        if user.helper.exists():
+            return render(request, 'profile.html', context)
+        elif user.helpSeeker is not None:
+            return render(request, 'search.html', context)
+    return not_found(request)
 
 def settings(request):
     return render(request, 'settings.html', None)
