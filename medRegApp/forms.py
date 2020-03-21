@@ -35,6 +35,7 @@ class HelperCreationForm(forms.ModelForm):
         }
 
     class Media:
+        css = {'all': ('datepicker.min.css',)}
         js = ('datepicker.min.js', 'dp_helper.js')
 
 
@@ -67,4 +68,5 @@ class HelpRequestCreationForm(forms.ModelForm):
         }
 
     class Media:
+        css = {'all': ('datepicker.min.css',)}
         js = ('datepicker.min.js', 'dp_helprequest.js')

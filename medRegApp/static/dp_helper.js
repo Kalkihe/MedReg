@@ -1,2 +1,7 @@
 // setup datepicker for helper registration
-const dp = datepicker('.mld')
+datepicker('.mld', {
+  formatter: (input, date, instance) => {
+    const value = date.toLocaleDateString('de-DE')
+    input.value = value
+  }
+});
