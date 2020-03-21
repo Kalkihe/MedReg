@@ -34,7 +34,7 @@ def profilepage(request, profile_id):
         context = { 'user' : user }
 
         if user.helper is not None:
-            return render(request, 'profile.html', context)
+            return render(request, 'profile_helper.html', context)
         elif user.helpSeeker is not None:
             return render(request, 'search.html', context)
     return not_found(request)
