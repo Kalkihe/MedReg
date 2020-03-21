@@ -104,18 +104,6 @@ def register_help_seeker(request):
         }
     )
 
-def help_request(request, profile_id):
-    users = models.CustomUser.objects.all().filter(id = profile_id)
-    if len(users) == 1:
-        user = users[0]
-        context = { 'user' : user }
-
-        if user.helpSeeker.exists():
-            return render(request, 'hilfegesuch.html', context)
-        elif user.helpSeeker is not None:
-            return render(request, 'search.html', context)
-    return not_found(request)
-
 
 def create_institution(request):
     if request.method == 'POST':
@@ -148,4 +136,5 @@ def results(request):
     h_list = Helper.objects.all()
     return render(request, 'results.html', {"helper_list":h_list})
 
-
+class HelpRequestDetailView(DetailView):
+    model = models.HelpRequest
