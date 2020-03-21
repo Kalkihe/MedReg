@@ -180,3 +180,43 @@ input[type="text"], input[type="password"] {
 h1 {
     margin-bottom: 12px;
 }
+
+.card {
+    border-style: solid;
+    border-width: 2px;
+    border-color: lightgray;
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    box-sizing: border-box;
+
+    box-shadow: 2px 2px 5px gray;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.card:hover {
+    box-shadow: 7px 7px 5px gray;
+}
+
+.card h2 {
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.register-card {
+    width: calc(50% - 6px);
+
+    display: inline-block;
+    float: left;
+
+    margin-right: 12px;
+}
+
+.card:last-child {
+    margin-right: 0;
+}
+
+.card img {
+    width: 100%;
+}
