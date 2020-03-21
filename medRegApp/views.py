@@ -27,16 +27,14 @@ def login(request):
                       })
 
 def profilepage(request, profile_id):
-    users = models.CustomUser.objects.all().filter(id = profile_id)
-
-    # users = models.Helper.objects.all().filter(id = profile_id)
+    users = models.CustomUser.objects.all().filter(id=profile_id)
     if len(users) == 1:
         user = users[0]
-        context = { 'user' : user }
+        context = {'user': user}
 
-        if user.helper is not None:
-            return render(request, 'profile_helper.html', context)
-        elif user.helpSeeker is not None:
+        if user.is_helper:
+            return render(request, 'profile.html', context)
+        elif user.is_help_seeker:
             return render(request, 'search.html', context)
     return not_found(request)
 

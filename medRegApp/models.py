@@ -56,6 +56,14 @@ class CustomUser(AbstractBaseUser):
     def is_staff(self):
         return self.is_admin
 
+    @property
+    def is_helper(self):
+        return hasattr(self, 'helper')
+
+    @property
+    def is_help_seeker(self):
+        return hasattr(self, 'helpseeker')
+
 
 class Qualification(models.Model):
     name = models.CharField(max_length=100)
