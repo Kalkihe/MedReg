@@ -32,22 +32,25 @@ a:visited {
 
 .container-login {
     width:20em;
-    height: 25em;
-    margin: 130px auto;
-    padding-top:50px;
+    margin: 15% auto;
+
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-right: 24px;
+    padding-left: 24px;
+
     text-align: center;
     background-color: rgba(69,38,38,0.6);
     border-radius:10px;
 }
 
-.container {
-    width: 60em;
-    height: 800px;
-    margin: 130px auto;
-    padding-top:50px;
-    text-align: center;
-    background-color: rgba(69,38,38,0.6);
-    border-radius:10px;
+.results-table {
+    border-collapse: collapse;
+}
+
+.results-table > tr > td,th {
+    padding-right: 8px;
+    padding-left: 8px;
 }
 
 .icon {
@@ -122,16 +125,7 @@ input[type="text"], input[type="password"] {
     padding-right: 7%;
     justify-content: flex-end;
 }
-.table {
-    border-color: black;
-    border-width: 4px;
-    border-style: solid;
-    border-collapse: collapse;
-    border-radius: 6px;
-    margin-right: 5px;
-    margin-left: 5px;
-    
-}
+
 .user-info {
     float: right;
 }
@@ -183,3 +177,6 @@ input[type="text"], input[type="password"] {
 
 #mapid { height: 500px; }
 
+h1 {
+    margin-bottom: 12px;
+}
