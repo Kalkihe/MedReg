@@ -1,10 +1,12 @@
-from django.shortcuts import render, redirect, reverse
 from django.http import HttpResponse
-from . import models
-from .forms import CustomUserCreationForm, HelperCreationForm, LocationCreationForm, HelpSeekerCreationForm, InstituionCreationForm, HelpRequestCreationForm
+from django.shortcuts import redirect, render, reverse
 from django.views.generic import DetailView
-from .models import Helper, HelpRequest, HelpSeeker, Institution, Qualification, Location, CustomUser
-from django.views.generic.list import ListView
+
+from .forms import (CustomUserCreationForm, HelperCreationForm,
+                    HelpRequestCreationForm, HelpSeekerCreationForm,
+                    InstituionCreationForm, LocationCreationForm)
+from .models import CustomUser, Helper, HelpRequest, Institution
+
 # Create your views here.
 
 
@@ -13,7 +15,7 @@ def index(request):
 
 
 def profilepage(request, profile_id):
-    users = models.CustomUser.objects.all().filter(id=profile_id)
+    users = CustomUser.objects.all().filter(id=profile_id)
     if len(users) == 1:
         user = users[0]
         context = {'user': user}
@@ -24,17 +26,22 @@ def profilepage(request, profile_id):
             return render(request, 'profile_helpseeker.html', context)
     return not_found(request)
 
+
 def settings(request):
     return render(request, 'settings.html', None)
+
 
 def not_found(request):
     return render(request, 'notfound.html', None)
 
+
 def startpage(request):
     return render(request, 'startpage.html', None)
 
+
 def register(request):
     return render(request, 'register-selection.html', None)
+
 
 def register_helper(request):
     if request.method == 'POST':
@@ -65,6 +72,7 @@ def register_helper(request):
             'action': 'register_helper',
         }
     )
+
 
 def register_help_seeker(request):
     if request.method == 'POST':
@@ -147,11 +155,13 @@ def create_help_request(request):
 
 
 class InstitutionDetailView(DetailView):
-    model = models.Institution
-    
+    model = Institution
+
+
 def results(request):
     h_list = Helper.objects.all()
-    return render(request, 'results.html', {"helper_list":h_list})
+    return render(request, 'results.html', {"helper_list": h_list})
+
 
 class HelpRequestDetailView(DetailView):
-    model = models.HelpRequest
+    model = HelpRequest

@@ -41,8 +41,7 @@ INSTALLED_APPS = [
 
     'phonenumber_field',
     'location_field.apps.DefaultConfig',
-
-		'django_seed'	
+    'django_seed'
 ]
 
 MIDDLEWARE = [
