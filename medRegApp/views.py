@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from . import models
+from django.contrib.auth import authenticate, login
 
 # Create your views here.
 
@@ -10,6 +11,15 @@ def index(request):
     
 def loginpage(request):
     return render (request, 'loginmaske.html', None)
+
+def login(request):
+    email = request.POST['email']
+    password = request.POST['password']
+    user = authenticate(request, username = email, password = password)
+    if user is not None:
+        return profilepage(request, profile_id = user.id)
+    else:
+        return index(request)
 
 def profilepage(request, profile_id):
     users = models.Helper.objects.all().filter(id = profile_id)
