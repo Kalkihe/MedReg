@@ -6,18 +6,20 @@
 <h1>Suchergebnisse</h1>
 
 <p>Hier siehst du deine Potenziellen Helfer</p>
-<p>
-<table>
+<table border="8" cellspacing="10" cellpadding="10">
+  <tr>
+    <th>User</th>
+    <th>Location</th>
+    <th>Available</th>
+  </tr>
+
+  {% for article in helper_list %}
     <tr>
-      <td>Inhalt</td>
+      <td>{{ article.user }}  |</td>
+      <td>{{ article.location }}</td>
+      <td>{{ article.is_available }}</td>
     </tr>
-    <tr>
-       <td>Person A</td> 
-    </tr>
-      <tr>
-          <td>person b</td>
-      </tr>
-  </table>
-</p>
+  {% endfor %}
+</table>
 
 {% endblock %}

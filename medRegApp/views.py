@@ -4,9 +4,9 @@ from . import models
 from django.contrib.auth import authenticate, login
 from .forms import CustomUserCreationForm, HelperCreationForm, LocationCreationForm, HelpSeekerCreationForm, InstituionCreationForm
 from django.views.generic import DetailView
-
+from .models import Helper, HelpRequest, HelpSeeker, Institution, Qualification, Location, CustomUser
+from django.views.generic.list import ListView
 # Create your views here.
-
 
 def index(request):
     return render(request, 'index.html', None)
@@ -79,7 +79,6 @@ def register_helper(request):
         }
     )
 
-
 def register_help_seeker(request):
     if request.method == 'POST':
         user_creation_form = CustomUserCreationForm(request.POST)
@@ -104,8 +103,6 @@ def register_help_seeker(request):
             'action': 'register_help_seeker',
         }
     )
-
-
 
 def help_request(request, profile_id):
     users = models.CustomUser.objects.all().filter(id = profile_id)
@@ -146,3 +143,9 @@ def create_institution(request):
 
 class InstitutionDetailView(DetailView):
     model = models.Institution
+    
+def results(request):
+    h_list = Helper.objects.all()
+    return render(request, 'results.html', {"helper_list":h_list})
+
+
