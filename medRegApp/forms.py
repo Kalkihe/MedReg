@@ -28,6 +28,14 @@ class HelperCreationForm(forms.ModelForm):
             'medical_leaving_date', 'current_occupation',
             'current_medical_occupation'
         )
+        widgets = {
+            'medical_leaving_date': forms.DateInput(
+                attrs={'class': 'mld'}
+            ),
+        }
+
+    class Media:
+        js = ('datepicker.min.js', 'dp_helper.js')
 
 
 class HelpSeekerCreationForm(forms.ModelForm):
@@ -49,3 +57,14 @@ class HelpRequestCreationForm(forms.ModelForm):
             'description', 'start_date', 'end_date',
             'required_helper_count'
         )
+        widgets = {
+            'start_date': forms.DateInput(
+                attrs={'class': 'dp_start'}
+            ),
+            'end_date': forms.DateInput(
+                attrs={'class': 'dp_end'}
+            )
+        }
+
+    class Media:
+        js = ('datepicker.min.js', 'dp_helprequest.js')
