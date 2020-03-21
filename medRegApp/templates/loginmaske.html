@@ -3,21 +3,31 @@
 {% block title %}Hello World from this Template{% endblock %}
 
 {% block content %}
-<h1>Hello World</h1>
+<html>
+	<head>
+		<!-- <title>Loginmaske</title> -->
+		<link rel="stylesheet" href="style.css" type="text/css"></link>
+		</head>
+	</head>
+<body>
 
-<p>This is a hello world from MedRegApp</p>
-
-<form>
-<p><label for="name">Username:</label>
-	<input type="text" name="name"></input>
+<div class="container">
+	<!-- <img scr="images/icon.jpg" class="icon"> -->
+	<h1>Login</h1>
+	<form>
+	<p><label for="name">Username:</label>
+		<input type="text" name="name"></input>
 	</p>
-<p><label for="passwort">Passwort:</label>
+	 <p><label for="passwort">Passwort:</label>
 		<input type="text" name="passwort"></input>
-</p>
+	</p>
+	<p>
+	<button type="submit" name="submit" class="button">Login</button>
+	</p>
+	</form>
+</div>
 
-
-
-
-
-</form>
+</body>
+</html>
 {% endblock %}
+
