@@ -1,4 +1,10 @@
 
+:root {
+    --header-height: 48px;
+    --header-border-size: 1px;
+    --footer-height: 80px;
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -16,12 +22,12 @@ body{
 }
 
 a {
-    color: #000;
+    color: inherit;
     font-weight: bolder;
 }
 
 a:visited {
-    color:#000;
+    color: inherit;
 }
 
 .container-login {
@@ -43,6 +49,7 @@ a:visited {
     background-color: rgba(69,38,38,0.6);
     border-radius:10px;
 }
+
 .icon {
     margin-top: -120px;
 }
@@ -54,6 +61,7 @@ input[type="text"], input[type="password"] {
     margin-bottom: 20px;
     padding-left: 5px;
 }
+
 .button {
     width: 150px;
     height: 50px;
@@ -67,6 +75,15 @@ input[type="text"], input[type="password"] {
     color: #000;
     cursor : pointer;
 }
+
+.header {
+    background: #ffffff;
+    height: var(--header-height);
+    border-bottom-width: var(--header-border-size);
+    border-bottom-style: solid;
+    border-bottom-color: black;
+}
+
 .header-part {
     display: inline-block;
     float: left;
@@ -78,14 +95,6 @@ input[type="text"], input[type="password"] {
 
     display: flex;
     align-items: center;
-}
-
-.header {
-    background: #ffffff;
-    height: 48px;
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-    border-bottom-color: black;
 }
 
 .header-start {
@@ -142,7 +151,32 @@ input[type="text"], input[type="password"] {
 
 .content-container {
     max-width: 1000px;
-    min-height: calc(100% - 49px);
+    min-height: calc(100% - (var(--header-height) + var(--header-border-size) + var(--footer-height)));
+
     margin-right: auto;
     margin-left: auto;
+
+    padding-top: 24px;
+    padding-bottom: 24px;
+    padding-right: 24px;
+    padding-left: 24px;
+
+    box-sizing: border-box;
+}
+
+.footer {
+    color: #afafaf;
+    background: #2f2f2f;
+
+    box-sizing: border-box;
+
+    height: var(--footer-height);
+    
+    padding-top: 24px;
+    padding-right: 7%;
+    padding-left: 7%;
+}
+
+#copyright-disclaimer {
+    font-size: 0.8em;
 }
