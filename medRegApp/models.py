@@ -101,3 +101,4 @@ class HelpRequest(models.Model):
     location = models.OneToOneField(Location, on_delete=models.CASCADE)
     required_helper_count = models.IntegerField()
     helpers = models.ManyToManyField(Helper, blank=True)
+    help_seeker = models.ForeignKey(HelpSeeker, on_delete=models.CASCADE)
