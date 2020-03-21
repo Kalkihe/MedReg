@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Hilfegesuch{% endblock %}
+
+{% block content %}
+
+<div  >
+	
+	<h1>Hilfegesuch von {{profile.user.Institution.name}}</h1>
+	<form>
+	<p>{{profile.user.HelpRequest.description}}
+	</p>
+	<p>{{profile.user.HelpRequest.required_helper_count}}
+	</p>
+	<p>{{profile.user.HelpRequest.location}}
+	</p>
+	<p>{{profile.user.HelpRequest.start_date}}-{{profile.user.HelpRequest.end_date}}
+	</p>
+	</form>
+</div>
+
+{% endblock %}
