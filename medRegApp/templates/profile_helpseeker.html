@@ -3,13 +3,14 @@
 {% block title %}Hello World from this Template{% endblock %}
 
 {% block content %}
-	<h1>Profilepage Help Seeker</h1>
+	<h1>Profilseite Hilfesuchender</h1>
 	<div>
-		<p>This is the profile of {{ user.first_name }} {{user.last_name}}</p>
+		<p>Diese Profilseite gehört{{ user.first_name }} {{user.last_name}}</p>
 		<p>id: {{user.id}}
-		<p>Your contact informations are: <br>
-			{{user.email}}<br>
-			{{user.phone_number}}<br>
+		<p>Kontaktinformationen: <br>
+			E-mail: {{user.email}}<br>
+			Telefonnummer: {{user.phone_number}}<br>
+			Institution:
 			{{user.HelpSeeker.institution.name}}<br>
 			{{user.HelpSeeker.institution.location.city}}<br>
 			{{user.HelpSeeker.institution.comment}}</p>
@@ -18,31 +19,31 @@
 		</p>
 	</div>
 	<div>
-		<h2>Current help request</h2>
+		<h2>Aktuelle Hilfsanfrage</h2>
 		<p>
-			Help request description: 
+			Beschreibung der Aufgabe: 
 			{{user.HelpSeeker.HelpRequest.description}}
 		</p>
 		<p>
-			Start date: {{user.HelpSeeker.HelpRequest.start_date}}<br>
-			End date: {{user.HelpSeeker.HelpRequest.end_date}}
+			Anfangsdatum: {{user.HelpSeeker.HelpRequest.start_date}}<br>
+			Enddatum: {{user.HelpSeeker.HelpRequest.end_date}}
 		</p>
 		<p>
-			location: {{user.HelpSeeker.HelpRequest.location}}
+			Ort: {{user.HelpSeeker.HelpRequest.location}}
 		</p>
 		<p>
-			Needed helpers: {{user.HelpSeeker.HelpRequest.required_helper_count}}
+			Gebrauchte Helfer: {{user.HelpSeeker.HelpRequest.required_helper_count}}
 		</p>
 		<p>
-			Contacted helpers: {{user.HelpSeeker.HelpRequest.helpers}}
+			Kontaktierte Helfer: {{user.HelpSeeker.HelpRequest.helpers}}
 		</p>
 			
 		
 	</div>
 	<p>
-		<Button type="Help request" name="Help request" class="button">create Help request</button>
-		<Button type="search helpers" name="search helpers" class="button">search helpers</button>
-		<Button type="edit" name="edit" class="button">edit</button>
+		<Button type="Help request" name="Help request" class="button">Hilfsanfrage</button>
+		<Button type="search helpers" name="search helpers" class="button">Helfer suchen</button>
+		<Button type="edit" name="edit" class="button">bearbeiten</button>
 	</p>
 
 {% endblock %}
