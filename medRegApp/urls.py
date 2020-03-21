@@ -7,5 +7,6 @@ urlpatterns = [
     path('profiles/<int:profile_id>', views.profilepage, name='profile-page'),
     path('loginpage', views.loginpage, name='loginpage'),
     path('settings', views.settings, name='settings'),
-    path('login', views.login, name='login')
+    path('login', views.login, name='login'),
+    path('startpage',views.startpage,name='startpage')
 ]

@@ -36,3 +36,6 @@ def settings(request):
 
 def not_found(request):
     return render(request, 'notfound.html', None)
+
+def startpage(request):
+    return render(request, 'startpage.html', None)
