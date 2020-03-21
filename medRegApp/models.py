@@ -76,7 +76,7 @@ class Helper(models.Model):
     location = models.OneToOneField(Location, on_delete=models.CASCADE)
     is_available = models.BooleanField(default=True)
     qualifications = models.ManyToManyField(Qualification, blank=True)
-    medical_leaving_date = models.DateField(auto_now=True)
+    medical_leaving_date = models.DateField()
     current_occupation = models.CharField(max_length=100)
     current_medical_occupation = models.BooleanField(default=False)
 
