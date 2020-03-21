@@ -121,7 +121,7 @@ def create_help_request(request):
         if not request.user.is_help_seeker:
             return HttpResponse('You can\'t do this as a helper')
     else:
-        return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
+        return redirect('%s?next=%s' % (reverse('login'), request.path))
     if request.method == 'POST':
         location_form = LocationCreationForm(request.POST)
         help_request_creation_form = HelpRequestCreationForm(request.POST)
