@@ -180,3 +180,6 @@ input[type="text"], input[type="password"] {
 #copyright-disclaimer {
     font-size: 0.8em;
 }
+
+#mapid { height: 500px; }
+
