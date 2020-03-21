@@ -1,7 +1,7 @@
 from django import forms
-from .models import Helper
 from django.contrib.auth.forms import UserCreationForm
-from .models import CustomUser, Location
+
+from .models import CustomUser, Helper, HelpSeeker, Location
 
 
 class LocationCreationForm(forms.ModelForm):
@@ -27,3 +27,9 @@ class HelperCreationForm(forms.ModelForm):
             'medical_leaving_date', 'current_occupation',
             'current_medical_occupation'
         )
+
+
+class HelpSeekerCreationForm(forms.ModelForm):
+    class Meta:
+        model = HelpSeeker
+        fields = ('institution',)
