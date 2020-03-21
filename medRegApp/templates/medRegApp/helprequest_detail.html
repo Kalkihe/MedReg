@@ -1,22 +1,19 @@
 {% extends "base.html" %}
 
 {% block title %}Hilfegesuch{% endblock %}
-
+{% block custom_css %}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
+{% endblock %}
 {% block content %}
-
-<div  >
-	
-	<h1>Hilfegesuch von {{profile.user.Institution.name}}</h1>
-	<form>
-	<p>{{profile.user.HelpSeeker.HelpRequest.description}}
-	</p>
-	<p>{{profile.user.HelpHelpRequest.required_helper_count}}
-	</p>
-	<p>{{profile.user.HelpRequest.location}}
-	</p>
-	<p>{{profile.user.HelpRequest.start_date}}-{{profile.user.HelpRequest.end_date}}
-	</p>
-	</form>
-</div>
-
+<h1>Hilfegesuch von {{ object.help_seeker.institution }}</h1>
+<p>
+	{{ object.description }}
+</p>
+<p>
+    Benötigte Helfer: {{ object.required_helper_count }}
+</p>
+<p>
+    {{ object.start_date|date }} - {{ object.end_date|date }}
+</p>
+{% include "snippets/map.html" with location=object.location.location %}
 {% endblock %}

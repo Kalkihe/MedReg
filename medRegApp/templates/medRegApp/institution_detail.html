@@ -1,31 +1,11 @@
 {% extends "base.html" %}
 
 {% block title %}Institution Detail{% endblock %}
-{% block custom_js %}
-
-<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
-
-<script>
-    let loc = '{{ object.location.location }}'.split(',').map((x) => { return parseFloat(x) });
-    var map = L.map('mapid').setView(loc, 13);
-    
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    maxZoom: 18,
-    id: 'mapbox/streets-v11',
-    tileSize: 512,
-    zoomOffset: -1,
-    accessToken: 'your.mapbox.access.token'
-}).addTo(map);
-    var marker = L.marker(loc).addTo(map);
-</script>
-{% endblock %}
 {% block custom_css %}
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
 {% endblock %}
 {% block content %}
 <h1>Institution {{ object.name }}</h1>
 <textarea disabled>{{ object.comment }}</textarea>
-<div id="mapid"></div>
+{% include "snippets/map.html" with location=object.location.location %}
 {% endblock %}
-
