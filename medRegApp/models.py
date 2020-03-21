@@ -86,6 +86,9 @@ class Institution(models.Model):
     location = models.OneToOneField(Location, on_delete=models.CASCADE)
     comment = models.TextField(max_length=500, blank=True)
 
+    def __str__(self):
+        return self.name
+
 
 class HelpSeeker(models.Model):
     user = models.OneToOneField(
