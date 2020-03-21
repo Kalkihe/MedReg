@@ -12,11 +12,17 @@ def loginpage(request):
     return render (request, 'loginmaske.html', None)
 
 def profilepage(request, profile_id):
-    user = models.CustomUser.objects.all().filter(id = profile_id)
+    users = models.Helper.objects.all().filter(id = profile_id)
 
-    context = { 'user' : user }
+    if len(users) == 1:
+        context = { 'user' : users[0] }
 
-    return render(request, 'profile.html', context)
+        return render(request, 'profile.html', context)
+    else:
+        return not_found(request)
 
 def settings(request):
     return render(request, 'settings.html', None)
+
+def not_found(request):
+    return render(request, 'notfound.html', None)
