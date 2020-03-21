@@ -14,3 +14,5 @@ def profilepage(request, profile_id):
     context = { 'profile_id' : profile_id }
     return render(request, 'profile.html', context)
 
+def settings(request):
+    return render(request, 'settings.html', None)
