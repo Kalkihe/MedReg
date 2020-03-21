@@ -175,6 +175,8 @@ input[type="text"], input[type="password"] {
     font-size: 0.8em;
 }
 
+#mapid { height: 500px; }
+
 h1 {
     margin-bottom: 12px;
 }
