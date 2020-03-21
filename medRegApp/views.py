@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from . import models
 
 # Create your views here.
 
@@ -11,7 +12,10 @@ def loginpage(request):
     return render (request, 'loginmaske.html', None)
 
 def profilepage(request, profile_id):
-    context = { 'profile_id' : profile_id }
+    user = models.CustomUser.objects.all().filter(id = profile_id)
+
+    context = { 'user' : user }
+
     return render(request, 'profile.html', context)
 
 def settings(request):
