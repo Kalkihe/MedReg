@@ -65,8 +65,9 @@ class Qualification(models.Model):
 
 
 class Location(models.Model):
-    city = models.CharField(max_length=255)
-    location = PlainLocationField(based_fields=['city'])
+    city = models.CharField(max_length=255, default='Karlsruhe')
+    location = PlainLocationField(based_fields=['city'],
+                                  default='49.0134, 8.4014')
 
 
 class Helper(models.Model):
