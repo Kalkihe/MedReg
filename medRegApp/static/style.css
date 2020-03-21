@@ -4,19 +4,26 @@
     margin: 0;
 }
 
+html, body {
+    height: 100%;
+}
+
 body{
     margin: 0 auto;
     /* background-image: url("images/background.jpg"); */
     /*background-size: cover;*/
     font-family: 'Trebuchet Ms', 'Lucinda Sans Unicode', 'Lucinda Grande', 'Lucinda Sans', Arial, sans-serif;
 }
+
 a {
-    color: #fff;
+    color: #000;
     font-weight: bolder;
 }
+
 a:visited {
-    color:#fff;
+    color:#000;
 }
+
 .container-login {
     width:20em;
     height: 25em;
@@ -26,6 +33,7 @@ a:visited {
     background-color: rgba(69,38,38,0.6);
     border-radius:10px;
 }
+
 .container {
     width: 60em;
     height: 800px;
@@ -85,6 +93,18 @@ input[type="text"], input[type="password"] {
     justify-content: flex-start;
 }
 
+.header-start > a:first-child {
+    height: 100%;
+}
+
+.header-start > a > img {
+    height: 100%;
+}
+
+.header-start > a {
+    margin-right: 12px;
+}
+
 .header-center {
     justify-content: center;
 }
@@ -110,4 +130,19 @@ input[type="text"], input[type="password"] {
 .errorlist {
 	color:#ff0000;
 	font-weight : bold
+}
+
+.unauthorized-links > a {
+    margin-right: 12px;
+}
+
+.unauthorized-links > a:last-child {
+    margin-right: 0;
+}
+
+.content-container {
+    max-width: 1000px;
+    min-height: calc(100% - 49px);
+    margin-right: auto;
+    margin-left: auto;
 }

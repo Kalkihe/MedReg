@@ -10,7 +10,10 @@
     <body>
         <div class="header">
             <div class="header-part header-start">
-                <img href="{% static "logo.png" %}"/>
+                <a href="/">
+                    <img src="{% static "logo.png" %}"/>
+                </a>
+                <a href="/">Homepage</a>
             </div>
             <div class="header-part header-center">
                 Medical Crisis Helper Registration App
@@ -22,8 +25,9 @@
                     </div>
                 {% endif %}
                 {% if not user.is_authenticated %}
-                    <div class="user-info">
-                        not authenticated.
+                    <div class="user-info unauthorized-links">
+                        <a href="/register">Register</a>
+                        <a href="/login">Login</a>
                     </div>
                 {% endif %}
             </div>
