@@ -54,7 +54,9 @@ ROOT_URLCONF = 'MedReg.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            'medRegApp/templates/'
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
