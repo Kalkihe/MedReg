@@ -104,8 +104,6 @@ def register_help_seeker(request):
         }
     )
 
-
-
 def help_request(request, profile_id):
     users = models.CustomUser.objects.all().filter(id = profile_id)
     if len(users) == 1:
