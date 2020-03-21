@@ -5,4 +5,5 @@ from django.http import HttpResponse
 
 
 def index(request):
-    return render(request, 'index.html', None)
+    return render(request, 'loginmaske.html', None)
+
