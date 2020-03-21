@@ -33,9 +33,9 @@ def profilepage(request, profile_id):
         context = {'user': user}
 
         if user.is_helper:
-            return render(request, 'profile.html', context)
+            return render(request, 'profile_helper.html', context)
         elif user.is_help_seeker:
-            return render(request, 'search.html', context)
+            return render(request, 'profile_helpseeker.html', context)
     return not_found(request)
 
 def settings(request):

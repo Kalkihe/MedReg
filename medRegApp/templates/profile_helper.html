@@ -4,32 +4,33 @@
 
 {% block content %}
 	<h1>Profilpage Helper</h1>
-
-	<p>This is the profile of {{ user.first_name }} {{user.last_name}}</p>
-	<p>Your contact informations are: <br>
-		{{user.email}}<br>
-		{{user.phone_number}}<br></p>
-	<p>
-		Your entered location is: {{user.helper.location.city}}
-	</p>
-	<p>
-		You are active {{user.is_active}}
-	</p>
-	<p>
-		{{user.comment}}
-	</p>
-	<p>
-		{{user.helper.qualifications}}
-	</p>
-	<p>
-		Medical leaving date: {{user.helper.medical_leaving_date}}
-	</p>
-	<p>
-		Current occupation: {{user.helper.current_occupation}}
-	</p>
-	<p>
-		Currently in medical occupation: {{user.helper.current_medical_occupation}}
-	</p>
+	<div>
+		<p>This is the profile of {{ user.first_name }} {{user.last_name}}</p>
+		<p>Your contact informations are: <br>
+			{{user.email}}<br>
+			{{user.phone_number}}<br></p>
+		<p>
+			Your entered location is: {{user.helper.location.city}}
+		</p>
+		<p>
+			You are available {{user.helper.is_available}}
+		</p>
+		<p>
+			{{user.comment}}
+		</p>
+		<p>
+			{{user.helper.qualifications}}
+		</p>
+		<p>
+			Medical leaving date: {{user.helper.medical_leaving_date}}
+		</p>
+		<p>
+			Current occupation: {{user.helper.current_occupation}}
+		</p>
+		<p>
+			Currently in medical occupation: {{user.helper.current_medical_occupation}}
+		</p>
+	</div>
 	<p>
 		<Button type="edit" name="edit" class="button">edit</button>
 	</p>
