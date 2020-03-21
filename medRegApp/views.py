@@ -1,8 +1,7 @@
 from django.shortcuts import render, redirect, reverse
 from django.http import HttpResponse
 from . import models
-from django.contrib.auth import authenticate, login
-from .forms import CustomUserCreationForm, HelperCreationForm, LocationCreationForm, HelpSeekerCreationForm, InstituionCreationForm
+from .forms import CustomUserCreationForm, HelperCreationForm, LocationCreationForm, HelpSeekerCreationForm, InstituionCreationForm, HelpRequestCreationForm
 from django.views.generic import DetailView
 from .models import Helper, HelpRequest, HelpSeeker, Institution, Qualification, Location, CustomUser
 from django.views.generic.list import ListView
@@ -111,6 +110,36 @@ def create_institution(request):
             location_form,
         ],
         'action': 'create_institution'
+    })
+
+
+def create_help_request(request):
+    if request.user.is_authenticated:
+        if not request.user.is_help_seeker:
+            return HttpResponse('You can\'t do this as a helper')
+    else:
+        return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
+    if request.method == 'POST':
+        location_form = LocationCreationForm(request.POST)
+        help_request_creation_form = HelpRequestCreationForm(request.POST)
+        if location_form.is_valid() and help_request_creation_form.is_valid():
+            help_request = help_request_creation_form.save(commit=False)
+            location = location_form.save()
+            help_request.location = location
+            help_request.help_seeker = request.user.helpseeker
+            help_request.save()
+            return redirect(
+                reverse('help_request_detail', args=(help_request.id,))
+            )
+    else:
+        location_form = LocationCreationForm()
+        help_request_creation_form = HelpRequestCreationForm()
+    return render(request, 'register.html', {
+        'forms': [
+            help_request_creation_form,
+            location_form,
+        ],
+        'action': 'create_help_request'
     })
 
 
