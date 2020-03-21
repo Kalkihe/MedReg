@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import Http404, HttpResponse
 from django.shortcuts import redirect, render, reverse
 from django.views.generic import DetailView
 
@@ -15,24 +15,21 @@ def index(request):
 
 
 def profilepage(request, profile_id):
-    users = CustomUser.objects.all().filter(id=profile_id)
-    if len(users) == 1:
-        user = users[0]
+    user = None
+    try:
+        user = CustomUser.objects.get(pk=profile_id)
+    except CustomUser.DoesNotExist:
+        raise Http404('Nutzer existiert nicht')
+    else:
         context = {'user': user}
-
         if user.is_helper:
             return render(request, 'profile_helper.html', context)
         elif user.is_help_seeker:
             return render(request, 'profile_helpseeker.html', context)
-    return not_found(request)
 
 
 def settings(request):
     return render(request, 'settings.html', None)
-
-
-def not_found(request):
-    return render(request, 'notfound.html', None)
 
 
 def startpage(request):
