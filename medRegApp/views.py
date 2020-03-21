@@ -33,7 +33,7 @@ def profilepage(request, profile_id):
         user = users[0]
         context = { 'user' : user }
 
-        if user.helper.exists():
+        if user.helper is not None:
             return render(request, 'profile.html', context)
         elif user.helpSeeker is not None:
             return render(request, 'search.html', context)
