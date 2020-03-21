@@ -1,11 +1,12 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 from django.http import HttpResponse
 from . import models
 from django.contrib.auth import authenticate, login
-from .forms import CustomUserCreationForm, HelperCreationForm, LocationCreationForm, HelpSeekerCreationForm
-
+from .forms import CustomUserCreationForm, HelperCreationForm, LocationCreationForm, HelpSeekerCreationForm, InstituionCreationForm
+from django.views.generic import DetailView
+from .models import Helper, HelpRequest, HelpSeeker, Institution, Qualification, Location, CustomUser
+from django.views.generic.list import ListView
 # Create your views here.
-
 
 def index(request):
     return render(request, 'index.html', None)
@@ -78,7 +79,6 @@ def register_helper(request):
         }
     )
 
-
 def register_help_seeker(request):
     if request.method == 'POST':
         user_creation_form = CustomUserCreationForm(request.POST)
@@ -104,8 +104,6 @@ def register_help_seeker(request):
         }
     )
 
-
-
 def help_request(request, profile_id):
     users = models.CustomUser.objects.all().filter(id = profile_id)
     if len(users) == 1:
@@ -117,3 +115,37 @@ def help_request(request, profile_id):
         elif user.helpSeeker is not None:
             return render(request, 'search.html', context)
     return not_found(request)
+
+
+def create_institution(request):
+    if request.method == 'POST':
+        location_form = LocationCreationForm(request.POST)
+        institution_creation_form = InstituionCreationForm(request.POST)
+        if location_form.is_valid() and institution_creation_form.is_valid():
+            institution = institution_creation_form.save(commit=False)
+            location = location_form.save()
+            institution.location = location
+            institution.save()
+            return redirect(
+                reverse('institution_detail', args=(institution.id,))
+            )
+    else:
+        location_form = LocationCreationForm()
+        institution_creation_form = InstituionCreationForm()
+    return render(request, 'register.html', {
+        'forms': [
+            institution_creation_form,
+            location_form,
+        ],
+        'action': 'create_institution'
+    })
+
+
+class InstitutionDetailView(DetailView):
+    model = models.Institution
+    
+def results(request):
+    h_list = Helper.objects.all()
+    return render(request, 'results.html', {"helper_list":h_list})
+
+
