@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from . import models
 from django.contrib.auth import authenticate, login
-from .forms import CustomUserCreationForm, HelperCreationForm, LocationCreationForm
+from .forms import CustomUserCreationForm, HelperCreationForm, LocationCreationForm, HelpSeekerCreationForm
 
 # Create your views here.
 
@@ -33,7 +33,7 @@ def profilepage(request, profile_id):
         user = users[0]
         context = { 'user' : user }
 
-        if user.helper.exists():
+        if user.helper is not None:
             return render(request, 'profile.html', context)
         elif user.helpSeeker is not None:
             return render(request, 'search.html', context)
@@ -69,9 +69,38 @@ def register_helper(request):
     return render(
         request, 'register.html',
         {
-            'user_form': user_creation_form,
-            'helper_form': helper_form,
-            'location_form': location_form
+            'forms': [
+                user_creation_form,
+                helper_form,
+                location_form,
+            ],
+            'action': 'register_helper',
+        }
+    )
+
+
+def register_help_seeker(request):
+    if request.method == 'POST':
+        user_creation_form = CustomUserCreationForm(request.POST)
+        help_seeker_creation_form = HelpSeekerCreationForm(request.POST)
+        if user_creation_form.is_valid() \
+                and help_seeker_creation_form.is_valid():
+            user = user_creation_form.save()
+            help_seeker = help_seeker_creation_form.save(commit=False)
+            help_seeker.user = user
+            help_seeker.save()
+            return redirect('/')
+    else:
+        user_creation_form = CustomUserCreationForm()
+        help_seeker_creation_form = HelpSeekerCreationForm(request.POST)
+    return render(
+        request, 'register.html',
+        {
+            'forms': [
+                user_creation_form,
+                help_seeker_creation_form,
+            ],
+            'action': 'register_help_seeker',
         }
     )
 

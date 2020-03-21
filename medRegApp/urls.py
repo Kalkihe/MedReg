@@ -10,5 +10,8 @@ urlpatterns = [
     path('login', views.login, name='login'),
     path('startpage',views.startpage,name='startpage'),
     path('register/helper', views.register_helper, name='register_helper'),
+
     path('hilfgesuch/<int:profile_id>', views.HelpRequest, name='hilfsgesuch'),
-]
+
+    path('register/helpseeker', views.register_help_seeker, name='register_help_seeker'),
+

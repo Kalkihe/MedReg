@@ -89,3 +89,9 @@ input[type="text"], input[type="password"] {
 .user-info {
     float: right;
 }
+
+
+.errorlist {
+	color:#ff0000;
+	font-weight : bold
+}
