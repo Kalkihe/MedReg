@@ -1,0 +1,2 @@
+django-phonenumber-field[phonenumbers]
+django-location-field
