@@ -25,7 +25,7 @@ def profilepage(request, profile_id):
     users = models.Helper.objects.all().filter(id = profile_id)
 
     if len(users) == 1:
-        context = { 'user' : users[0] }
+        context = { 'profile' : users[0], 'user' : None }
 
         return render(request, 'profile.html', context)
     else:
