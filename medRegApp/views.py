@@ -38,11 +38,6 @@ def profilepage(request, profile_id):
         elif user.helpSeeker is not None:
             return render(request, 'search.html', context)
     return not_found(request)
-        context = { 'profile' : users[0], 'user' : None }
-
-        return render(request, 'profile.html', context)
-    else:
-        return not_found(request)
 
 def settings(request):
     return render(request, 'settings.html', None)
