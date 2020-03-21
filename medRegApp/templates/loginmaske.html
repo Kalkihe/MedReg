@@ -3,10 +3,12 @@
 {% block title %}Hello World from this Template{% endblock %}
 
 {% block content %}
+{% load static %}
 <html>
 	<head>
 		<!-- <title>Loginmaske</title> -->
-		<link rel="stylesheet" href="style.css" type="text/css"></link>
+		
+		<link rel="stylesheet" href={% static "style.css" %} type="text/css"></link>
 		</head>
 	</head>
 <body>
