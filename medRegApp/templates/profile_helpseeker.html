@@ -7,17 +7,11 @@
 	<div>
 		<p>This is the profile of {{ user.first_name }} {{user.last_name}}</p>
 		<p>Your contact informations are: <br>
-			{{user.HelpSeeker.email}}<br>
-			{{user.HelpSeeker.phone_number}}<br>
+			{{user.email}}<br>
+			{{user.phone_number}}<br>
 			{{user.HelpSeeker.institution.name}}<br>
-			{{user.HelpSeeker.institution.location}}<br>
+			{{user.HelpSeeker.institution.location.city}}<br>
 			{{user.HelpSeeker.institution.comment}}</p>
-		<p>
-			Your entered location is: {{user.location}}
-		</p>
-		<p>
-			You are active {{user.is_active}}
-		</p>
 		<p>
 			{{user.HelpSeeker.comment}}
 		</p>
