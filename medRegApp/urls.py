@@ -14,4 +14,5 @@ urlpatterns = [
     path('results', views.results, name='results'),
     path('users/', include('django.contrib.auth.urls')),
     path('helprequests/create', views.create_help_request, name='create_help_request'),
+    path('register', views.register, name="register-selection")
 ]

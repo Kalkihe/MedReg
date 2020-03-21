@@ -33,6 +33,9 @@ def not_found(request):
 def startpage(request):
     return render(request, 'startpage.html', None)
 
+def register(request):
+    return render(request, 'register-selection.html', None)
+
 def register_helper(request):
     if request.method == 'POST':
         user_creation_form = CustomUserCreationForm(request.POST)
