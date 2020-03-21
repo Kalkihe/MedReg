@@ -5,6 +5,7 @@
         <meta charset="utf-8">
         <link rel="stylesheet" href={% static "style.css" %} type="text/css"></link>
         <title>{% block title %}{% endblock %}</title>
+        {% block custom_css %}{% endblock %}
     </head>
     <body>
         <div class="header">
@@ -31,7 +32,8 @@
             {% block content %}{% endblock %}
         </div>
         <div class="footer">
-            
+
         </div>
     </body>
+    {% block custom_js %}{% endblock %}
 </html>
