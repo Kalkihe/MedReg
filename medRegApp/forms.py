@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 
-from .models import CustomUser, Helper, HelpSeeker, Location
+from .models import CustomUser, Helper, HelpSeeker, Location, Institution
 
 
 class LocationCreationForm(forms.ModelForm):
@@ -33,3 +33,9 @@ class HelpSeekerCreationForm(forms.ModelForm):
     class Meta:
         model = HelpSeeker
         fields = ('institution',)
+
+
+class InstituionCreationForm(forms.ModelForm):
+    class Meta:
+        model = Institution
+        fields = ('name', 'comment')

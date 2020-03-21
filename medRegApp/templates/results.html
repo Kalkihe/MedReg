@@ -5,19 +5,35 @@
 {% block content %}
 <h1>Suchergebnisse</h1>
 
-<p>Hier siehst du deine Potenziellen Helfer</p>
-<p>
-<table>
+<div class="container">
+
+  <p>Hier siehst du deine Potenziellen Helfer</p>
+  <div class="table">
+  <table border="2">
     <tr>
-      <td>Inhalt</td>
+     <th>User</th>
+     <th>Location</th>
+     <th>Available</th>
+      <th>Qualifications</th>
+     <th>Medical leaving Date</th>
+     <th>Current Occupation</th>
+     <th>Current Medical Occupation</th>
     </tr>
-    <tr>
-       <td>Person A</td> 
-    </tr>
+
+    {% for entry in helper_list %}
       <tr>
-          <td>person b</td>
-      </tr>
+       <td>{{ entry.user }}</td>
+        <td>{{ entry.location }}</td>
+        <td>{{ entry.is_available }}</td>
+        <td>{{ entry.qualifications }}</td>
+       <td>{{ entry.medical_leaving_date }}</td>
+       <td>{{ entry.current_occupation }}</td>
+       <td>{{ entry.current_medical_occupation }}</td>    
+     </tr>
+   {% endfor %}
   </table>
-</p>
+  </div>
+
+</div>
 
 {% endblock %}
