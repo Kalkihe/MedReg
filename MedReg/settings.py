@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'phonenumber_field',
-    'location_field.apps.DefaultConfig',
+    'location_field.apps.DefaultConfig'
 ]
 
 MIDDLEWARE = [
@@ -84,7 +84,7 @@ DATABASES = {
     }
 }
 
-AUTH_USER_MODEL = 'medRegApp.models.CustomUser'
+AUTH_USER_MODEL = 'medRegApp.CustomUser'
 
 
 # Password validation
