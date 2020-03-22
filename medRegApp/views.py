@@ -162,7 +162,7 @@ def create_help_request(request):
         'action': 'create_help_request',
         'caption': 'Ein Hilfegesuch erstellen',
         'stylesheets': [
-            '/static/stylesheet-create-helprequest.css'
+            '/static/stylesheet-register.css'
         ]
     })
 
