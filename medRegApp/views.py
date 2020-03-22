@@ -1,3 +1,4 @@
+from django.conf import settings as django_settings
 from django.contrib.auth import login
 from django.http import Http404, HttpResponse, HttpResponseServerError
 from django.shortcuts import redirect, render, reverse
@@ -6,8 +7,8 @@ from django.views.generic import DetailView, ListView
 from .forms import (CustomUserCreationForm, HelperCreationForm,
                     HelpRequestCreationForm, HelpSeekerCreationForm,
                     InstitutionCreationForm, LocationCreationForm)
-from .models import CustomUser, Helper, HelpSeeker, HelpRequest, Institution
-
+from .models import CustomUser, Helper, HelpRequest, Institution
+from .utils import send_invite_mail
 # Create your views here.
 
 
@@ -181,6 +182,7 @@ def add_helper(request):
         raise Http404('Couldn\'t find help request')
     else:
         # find selected helpers
+        helpers = []
         for key in request.POST.keys():
             if not key.startswith('helper-'):
                 continue
@@ -191,6 +193,9 @@ def add_helper(request):
                 pass
             else:
                 help_request.helpers.add(helper)
+                helpers.append(helper)
+        if django_settings.EMAIL:
+            send_invite_mail(help_request, helpers)
         return redirect(
             reverse('help_request_detail', args=(help_request.id,))
         )
