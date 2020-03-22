@@ -19,10 +19,15 @@ def profilepage(request, profile_id):
     user = None
     try:
         user = CustomUser.objects.get(pk=profile_id)
+        user_login = request.user
+        if user.id == user_login.id:
+            login = 1
+        else:
+            login = 0
     except CustomUser.DoesNotExist:
         raise Http404('Nutzer existiert nicht')
     else:
-        context = {'user': user}
+        context = {'user': user, 'login':login}
         if user.is_helper:
             return render(request, 'profile_helper.html', context)
         elif user.is_help_seeker:
