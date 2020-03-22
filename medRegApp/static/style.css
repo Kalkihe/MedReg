@@ -44,6 +44,18 @@ a:visited {
     border-radius:10px;
 }
 
+.table-vertical-top-align > tbody > tr {
+    vertical-align: top;
+}
+
+.table-vertical-top-align > tbody > tr > td:nth-child(1) {
+    width: 30%;
+}
+
+.table-vertical-top-align > tbody > tr > td:nth-child(1):not([colspan]):after {
+    content: ":";
+}
+
 .results-table {
     border-collapse: collapse;
 }
