@@ -134,29 +134,20 @@ def create_institution(request):
     if request.method == 'POST':
         location_form = LocationCreationForm(request.POST)
         institution_creation_form = InstitutionCreationForm(request.POST)
+
         if location_form.is_valid() and institution_creation_form.is_valid():
             institution = institution_creation_form.save(commit=False)
             location = location_form.save()
             institution.location = location
-            institution.save()
-            return redirect(
-                reverse('institution_detail', args=(institution.id,))
-            )
-    else:
-        location_form = LocationCreationForm()
-        institution_creation_form = InstitutionCreationForm()
-    return render(request, 'register.html', {
-        'forms': [
-            institution_creation_form,
-            location_form,
-        ],
-        'action': 'create_institution',
-        'caption': 'Erstellung einer Institution',
-        'stylesheets': [
-            '/static/stylesheet-register.css'
-        ]
-    })
 
+            institution.save()
+
+            request.user.helpseeker.institution = institution;
+            request.user.helpseeker.save()
+
+            return redirect('/')
+    else:
+        raise Http404('Couldn\'t find page.')
 
 def create_help_request(request):
     if request.user.is_authenticated:
