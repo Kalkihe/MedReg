@@ -32,7 +32,8 @@
             <td colspan="2">{{user.comment}}</td>
         </tr>
         <tr>
-            <td colspan="2">
+            <td>Qualifikationen</td>
+            <td>
                 {% if user.helper.qualifications %}
                     <ul style="position:relative; left:10%">
                 {% for qualification in user.helper.qualifications.all %}
