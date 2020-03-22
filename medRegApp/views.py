@@ -52,7 +52,7 @@ def register_helper(request):
             helper.save()
             helper_form.save_m2m()
             login(request, user)
-            return redirect(reverse('/'))
+            return redirect('/')
     else:
         user_creation_form = CustomUserCreationForm()
         helper_form = HelperCreationForm()
