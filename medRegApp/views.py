@@ -32,10 +32,6 @@ def settings(request):
     return render(request, 'settings.html', None)
 
 
-def startpage(request):
-    return render(request, 'startpage.html', None)
-
-
 def register(request):
     return render(request, 'register-selection.html', None)
 
@@ -128,7 +124,7 @@ def create_institution(request):
         'action': 'create_institution',
         'caption': 'Erstellung einer Institution',
         'stylesheets': [
-            '/static/stylesheet-create-institution.css'
+            '/static/stylesheet-register.css'
         ]
     })
 
@@ -162,7 +158,7 @@ def create_help_request(request):
         'action': 'create_help_request',
         'caption': 'Ein Hilfegesuch erstellen',
         'stylesheets': [
-            '/static/stylesheet-create-helprequest.css'
+            '/static/stylesheet-register.css'
         ]
     })
 

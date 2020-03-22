@@ -2,22 +2,22 @@
 
 {% load static %}
 
-{% block title %}Hello World from this Template{% endblock %}
+{% block title %}MedReg - Registrierung für medizinisches Hilfspersonal{% endblock %}
 
 {% block content %}
-<h1>What are you registering for?</h1>
+<h1>Sind Sie Hilfesuchender oder möglicher Helfer?</h1>
 
 <div class="register-selection-cards-wrapper">
     <div class="card register-card">
         <a href="/register/helper">
             <img src={% static "logo-helper.jpg" %}/>
-            <h2>Helping people</h2>
+            <h2>Hilfe anbieten</h2>
         </a>
     </div>
     <div class="card register-card">
         <a href="/register/helpseeker">
             <img src={% static "logo-helpseeker.jpg" %}/>
-            <h2>Looking for help</h2>
+            <h2>Hilfe suchen</h2>
         </a>
     </div>
 </div>

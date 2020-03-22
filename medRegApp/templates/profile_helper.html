@@ -1,33 +1,49 @@
 {% extends "base.html" %}
 
-{% block title %}Hello World from this Template{% endblock %}
+{% block title %}MedReg - Profil{% endblock %}
 
 {% block content %}
 	<h1>Profilseite von {{ user.first_name }} {{user.last_name}}</h1>
 	<div>
 		<p>Kontaktinformationen: <br>
-			E-mail:{{user.email}}<br>
-			Telefonnummer:{{user.phone_number}}<br></p>
+			E-mail: {{user.email}}<br>
+			Telefonnummer: {{user.phone_number}}<br></p>
 		<p>
 			Wohnort: {{user.helper.location.city}}
 		</p>
 		<p>
-			Verfügbar? {{user.helper.is_available}}
+			Verfügbar?
+            {%  if user.helper.is_avialable %}
+            Ja
+            {% else %}
+            Nein
+            {% endif %}
 		</p>
 		<p>
-			{{user.comment}}
+			Kommentar: {{user.comment}}
 		</p>
 		<p>
-			{{user.helper.qualifications}}
+			Qualifikationen:
+            {% if user.helper.qualifications %}
+            Keine
+            {% else %}
+            {{user.helper.qualifications}}
+            {% endif %}
 		</p>
 		<p>
 			Ausstrittsdatum aus der medizin Branche: {{user.helper.medical_leaving_date}}
 		</p>
 		<p>
-			Aktuelle Tätigkeit: {{user.helper.current_occupation}}
+			Aktuelle Tätigkeit:
+            {{user.helper.current_occupation}}
 		</p>
 		<p>
-			Aktuell in der Medizin ehrenamtlich oder teilberuflich tätig?: {{user.helper.current_medical_occupation}}
+			Aktuell in der Medizin ehrenamtlich oder teilberuflich tätig?:
+            {% if user.helper.current_medical_occupation %}
+            Ja
+            {% else %}
+            Nein
+            {% endif %}
 		</p>
 	</div>
 	<p>
