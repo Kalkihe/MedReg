@@ -16,6 +16,7 @@ form > p > label {
     width: calc(30% - 5px);
 }
 
+form > p > select,
 form > p > input {
     box-sizing: border-box;
     display: inline-block;

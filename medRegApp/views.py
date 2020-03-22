@@ -69,7 +69,7 @@ def register_helper(request):
             'action': 'register_helper',
             'caption': 'Registrierung für Helfer',
             'stylesheets': [
-                '/static/stylesheet-register-helper.css'
+                '/static/stylesheet-register.css'
             ]
         }
     )
@@ -99,7 +99,7 @@ def register_help_seeker(request):
             'action': 'register_help_seeker',
             'caption': 'Registrierung für Hilfesuchende',
             'stylesheets': [
-                '/static/stylesheet-register-helpseeker.css'
+                '/static/stylesheet-register.css'
             ]
         }
     )
