@@ -94,13 +94,11 @@ def register_help_seeker(request):
             return redirect('/')
     else:
         user_creation_form = CustomUserCreationForm()
-        help_seeker_creation_form = HelpSeekerCreationForm(request.POST)
     return render(
         request, 'register.html',
         {
             'forms': [
-                user_creation_form,
-                help_seeker_creation_form,
+                user_creation_form
             ],
             'action': 'register_help_seeker',
             'caption': 'Registrierung für Hilfesuchende',
