@@ -124,7 +124,7 @@ def create_institution(request):
         'action': 'create_institution',
         'caption': 'Erstellung einer Institution',
         'stylesheets': [
-            '/static/stylesheet-create-institution.css'
+            '/static/stylesheet-register.css'
         ]
     })
 
@@ -158,7 +158,7 @@ def create_help_request(request):
         'action': 'create_help_request',
         'caption': 'Ein Hilfegesuch erstellen',
         'stylesheets': [
-            '/static/stylesheet-create-helprequest.css'
+            '/static/stylesheet-register.css'
         ]
     })
 
