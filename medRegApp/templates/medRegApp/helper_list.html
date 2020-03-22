@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}MedReg - Ergebnisliste{% endblock %}
+
+{% block content %}
+{% load i18n %}
+<h1>Suchergebnisse</h1>
+
+<p>Hier siehst du deine Potenziellen Helfer:</p>
+<table class="results-table" border="2">
+    <tr>
+        <th>Nutzer</th>
+        <th>{% trans "location" %} </th>
+        <th>{% trans 'is_available' %}</th>
+        <th>{% trans 'qualifications' %}</th>
+        <th>{% trans 'medical_leaving_date' %}</th>
+        <th>{% trans 'current_occupation' %}</th>
+        <th>{% trans 'current_medical_occupation' %}</th>
+    </tr>
+
+    {% for entry in object_list %}
+    <tr>
+        <td><a href="{% url 'view_profile' entry.user.id %}">{{ entry.user.first_name }} {{ entry.user.last_name }}</a></td>
+        <td>{{ entry.location.city }}</td>
+        <td>{{ entry.is_available|yesno:"Ja,Nein" }}</td>
+        <td>
+            <ul>
+            {% for qualification in entry.qualifications.all %}
+            <li>{{ qualification }}</li>
+            {% endfor %}
+            </ul>
+        </td>
+        <td>{{ entry.medical_leaving_date }}</td>
+        <td>{{ entry.current_occupation }}</td>
+        <td>{{ entry.current_medical_occupation|yesno:"Ja,Nein" }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

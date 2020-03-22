@@ -1,7 +1,7 @@
+from django.contrib.auth import login
 from django.http import Http404, HttpResponse
 from django.shortcuts import redirect, render, reverse
-from django.views.generic import DetailView
-from django.contrib.auth import login
+from django.views.generic import DetailView, ListView
 
 from .forms import (CustomUserCreationForm, HelperCreationForm,
                     HelpRequestCreationForm, HelpSeekerCreationForm,
@@ -171,10 +171,9 @@ class InstitutionDetailView(DetailView):
     model = Institution
 
 
-def results(request):
-    h_list = Helper.objects.all()
-    return render(request, 'results.html', {"helper_list": h_list})
-
-
 class HelpRequestDetailView(DetailView):
     model = HelpRequest
+
+
+class HelperListView(ListView):
+    model = Helper

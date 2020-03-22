@@ -1,4 +1,5 @@
-from django.urls import path, include
+from django.urls import include, path
+
 from . import views
 
 urlpatterns = [
@@ -14,9 +15,10 @@ urlpatterns = [
          name='institution_detail'),
     path('helprequests/<int:pk>', views.HelpRequestDetailView.as_view(),
          name='help_request_detail'),
-    path('results', views.results, name='results'),
     path('users/', include('django.contrib.auth.urls')),
     path('helprequests/create', views.create_help_request,
          name='create_help_request'),
+    path('helpers/', views.HelperListView.as_view(),
+         name='helper_list'),
     path('register', views.register, name="register-selection")
 ]
