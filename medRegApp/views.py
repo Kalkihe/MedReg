@@ -49,6 +49,7 @@ def register_helper(request):
             helper.user = user
             helper.location = location
             helper.save()
+            helper_form.save_m2m()
             return redirect(reverse('login'))
     else:
         user_creation_form = CustomUserCreationForm()
