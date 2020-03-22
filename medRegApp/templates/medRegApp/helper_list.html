@@ -7,8 +7,14 @@
 <h1>Suchergebnisse</h1>
 
 <p>Hier siehst du deine Potenziellen Helfer:</p>
+{% if help_request %}
+<form method="POST" action="{% url 'add_helper' %}">
+{% csrf_token %}
+<input name="help_request" value="{{ help_request.id }}" hidden>
+{% endif %}
 <table class="results-table" border="2">
     <tr>
+        {% if help_request %}<th></th>{% endif %}
         <th>Nutzer</th>
         <th>{% trans "location" %} </th>
         <th>{% trans 'is_available' %}</th>
@@ -20,6 +26,7 @@
 
     {% for entry in object_list %}
     <tr>
+        {% if help_request %}<td><input type="checkbox" name="helper-{{ entry.id }}" /></td>{% endif %}
         <td><a href="{% url 'view_profile' entry.user.id %}">{{ entry.user.first_name }} {{ entry.user.last_name }}</a></td>
         <td>{{ entry.location.city }}</td>
         <td>{{ entry.is_available|yesno:"Ja,Nein" }}</td>
@@ -36,5 +43,8 @@
     </tr>
     {% endfor %}
 </table>
-
+{% if help_request %}
+<input type="submit" value="Abschicken">
+</form>
+{% endif %}
 {% endblock %}

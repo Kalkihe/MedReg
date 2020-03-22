@@ -7,14 +7,6 @@
 <div>
     <table class="table-vertical-top-align">
         <tr>
-            <td>E-Mail Adresse</td>
-            <td>{{user.email}}</td>
-        </tr>
-        <tr>
-            <td>Telefonnummer</td>
-            <td>{{user.phone_number}}</td>
-        </tr>
-        <tr>
             <td>Wohnort</td>
             <td>{{user.helper.location.city}}</td>
         </tr>
@@ -27,9 +19,6 @@
                     Nein
                 {% endif %}
             </td>
-        </tr>
-        <tr>
-            <td colspan="2">{{user.comment}}</td>
         </tr>
         <tr>
             <td>Qualifikationen</td>
@@ -62,6 +51,10 @@
                     Nein
                 {% endif %}
             </td>
+        </tr>
+        <tr>
+            <td>Kommentar</td>
+            <td>{{user.comment}}</td>
         </tr>
     </table>
 </div>

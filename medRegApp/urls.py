@@ -22,5 +22,6 @@ urlpatterns = [
          name='help_request_list'),
     path('helpers/', views.HelperListView.as_view(),
          name='helper_list'),
-    path('register', views.register, name="register-selection")
+    path('register', views.register, name="register-selection"),
+    path('add_helper', views.add_helper, name='add_helper'),
 ]
