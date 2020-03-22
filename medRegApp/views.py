@@ -128,7 +128,7 @@ def create_institution(request):
         'action': 'create_institution',
         'caption': 'Erstellung einer Institution',
         'stylesheets': [
-            '/static/stylesheet-create-institution.css'
+            '/static/stylesheet-register.css'
         ]
     })
 
