@@ -231,7 +231,8 @@ class HelperListView(ListView):
     def get_queryset(self):
         help_request = self.get_help_request()
         if help_request:
-            return Helper.objects.filter(is_available=True)
+            return Helper.objects.filter(is_available=True)\
+                .exclude(helprequest__in=[help_request])
         else:
             return Helper.objects.filter(is_available=True)
 
