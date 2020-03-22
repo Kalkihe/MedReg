@@ -21,9 +21,9 @@ def profilepage(request, profile_id):
         user = CustomUser.objects.get(pk=profile_id)
         user_login = request.user
         if user.id == user_login.id:
-            login = 1
+            login = True
         else:
-            login = 0
+            login = False
     except CustomUser.DoesNotExist:
         raise Http404('Nutzer existiert nicht')
     else:
