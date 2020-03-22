@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load static %}
+
 {% block title %}Registrierung - Auswahl eines Instituts{% endblock %}
 
 {% block custom_js %}
@@ -16,6 +18,10 @@
     {% endif %}
 {% endblock %}
 
+{% block custom_css %}
+    <link rel="stylesheet" type="text/css" href="{% static "stylesheet-select-institution.css" %}">
+{% endblock %}
+
 {% block content %}
 <h1>Auswahl eines Instituts</h1>
 
@@ -26,7 +32,9 @@
         <form method="post" action="{% url 'select-institute' %}">
             {% csrf_token %}
             {{ institute_select_form.as_p }}
-            <input class="button" type="submit" value="Institution auswählen">
+            <p class="button-wrapper">
+                <input class="button" type="submit" value="Institution auswählen">
+            </p>
             <input type="hidden" name="next" value="{{ next }}">
         </form>
     </div>
@@ -39,7 +47,7 @@
             {{ institution_creation_form.as_p }}
             {{ location_form.as_p }}
 
-            <p>
+            <p class="button-wrapper">
                 <input class="button" type="submit" value="Institution erstellen und auswählen">
             </p>
             <input type="hidden" name="next" value="{{ next }}">
