@@ -3,55 +3,69 @@
 {% block title %}MedReg - Profil{% endblock %}
 
 {% block content %}
-	<h1>Profilseite von {{ user.first_name }} {{user.last_name}}</h1>
-	<div>
-		<p>Kontaktinformationen: <br>
-			E-Mail Adresse: {{user.email}}<br>
-			Telefonnummer: {{user.phone_number}}<br></p>
-		<p>
-			Wohnort: {{user.helper.location.city}}
-		</p>
-		<p>
-			Verfügbarkeit:
-            {%  if user.helper.is_available %}
-            Ja
-            {% else %}
-            Nein
-            {% endif %}
-		</p>
-		<p>
-            Kommentar: <div style="position: relative; left:10%">{{user.comment}}</div>
-		</p>
-		<p>
-			Qualifikationen:
-            {% if user.helper.qualifications %}
-                <ul style="position:relative; left:10%">
-            {% for qualification in user.helper.qualifications.all %}
-                <li>{{ qualification.name }}</li>
-            {% endfor %}
-                </ul>
-            {% else %}
-            Keine
-            {% endif %}
-		</p>
-		<p>
-			Ausstrittsdatum aus der medizinischen Tätigkeit: {{user.helper.medical_leaving_date}}
-		</p>
-		<p>
-			Aktuelle Tätigkeit:
-            {{user.helper.current_occupation}}
-		</p>
-		<p>
-			Aktuell in der Medizin ehrenamtlich oder teilberuflich tätig?:
-            {% if user.helper.current_medical_occupation %}
-            Ja
-            {% else %}
-            Nein
-            {% endif %}
-		</p>
-	</div>
-	<p>
-		<a href="{% url 'index' %}"> <Button action={% url 'index'%} type="button" name="edit" class="button">bearbeiten</button></a>
-	</p>
+<h1>Profilseite von {{ user.first_name }} {{user.last_name}}</h1>
+<div>
+    <table class="table-vertical-top-align">
+        <tr>
+            <td>E-Mail Adresse</td>
+            <td>{{user.email}}</td>
+        </tr>
+        <tr>
+            <td>Telefonnummer</td>
+            <td>{{user.phone_number}}</td>
+        </tr>
+        <tr>
+            <td>Wohnort</td>
+            <td>{{user.helper.location.city}}</td>
+        </tr>
+        <tr>
+            <td>Verfügbar?</td>
+            <td>
+                {%  if user.helper.is_available %}
+                    Ja
+                {% else %}
+                    Nein
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">{{user.comment}}</td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                {% if user.helper.qualifications %}
+                    <ul style="position:relative; left:10%">
+                {% for qualification in user.helper.qualifications.all %}
+                    <li>{{ qualification.name }}</li>
+                {% endfor %}
+                    </ul>
+                {% else %}
+                    Keine
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <td>Ausstrittsdatum aus der medizin Branche</td>
+            <td>{{user.helper.medical_leaving_date}}</td>
+        </tr>
+        <tr>
+            <td>Aktuelle Tätigkeit</td>
+            <td>{{user.helper.current_occupation}}</td>
+        </tr>
+        <tr>
+            <td>Aktuell in der Medizin ehrenamtlich oder teilberuflich tätig?</td>
+            <td>
+                {% if user.helper.current_medical_occupation %}
+                    Ja
+                {% else %}
+                    Nein
+                {% endif %}
+            </td>
+        </tr>
+    </table>
+</div>
+<p>
+    <a href="{% url 'index' %}"> <Button action={% url 'index'%} type="button" name="edit" class="button">bearbeiten</button></a>
+</p>
 
 {% endblock %}
