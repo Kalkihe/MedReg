@@ -1,4 +1,4 @@
-{% load static %}
+﻿{% load static %}
 <!doctype html>
 <html>
     <head>
@@ -15,7 +15,7 @@
                 </a>
                 <a href="/">Startseite</a>
                 {% if user.is_help_seeker %}
-                <a href="{% url 'create_help_request' %}">Neue Hiilfsanfrage</a>
+                <a href="{% url 'create_help_request' %}">Neue Hilfsanfrage</a>
                 <a href="{% url 'help_request_list' %}">Meine Hilfsanfragen</a>
                 {% endif %}
             </div>
