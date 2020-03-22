@@ -32,10 +32,6 @@ def settings(request):
     return render(request, 'settings.html', None)
 
 
-def startpage(request):
-    return render(request, 'startpage.html', None)
-
-
 def register(request):
     return render(request, 'register-selection.html', None)
 
