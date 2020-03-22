@@ -3,46 +3,26 @@
 {% block title %}MedReg - Profil{% endblock %}
 
 {% block content %}
-	<h1>Profilseite {{ user.first_name }} {{user.last_name}}</h1>
-	<div>
-		<p>id: {{user.id}}
-		<p>Kontaktinformationen: <br>
-			E-mail: {{user.email}}<br>
-			Telefonnummer: {{user.phone_number}}<br>
-			Institution:
-			{{user.HelpSeeker.institution.name}}<br>
-			{{user.HelpSeeker.institution.location.city}}<br>
-			{{user.HelpSeeker.institution.comment}}</p>
-		<p>
-			{{user.HelpSeeker.comment}}
-		</p>
-	</div>
-	<div>
-		<h2>Aktuelle Hilfsanfrage</h2>
-		<p>
-			Beschreibung der Aufgabe: 
-			{{user.HelpSeeker.HelpRequest.description}}
-		</p>
-		<p>
-			Anfangsdatum: {{user.HelpSeeker.HelpRequest.start_date}}<br>
-			Enddatum: {{user.HelpSeeker.HelpRequest.end_date}}
-		</p>
-		<p>
-			Ort: {{user.HelpSeeker.HelpRequest.location}}
-		</p>
-		<p>
-			Gebrauchte Helfer: {{user.HelpSeeker.HelpRequest.required_helper_count}}
-		</p>
-		<p>
-			Kontaktierte Helfer: {{user.HelpSeeker.HelpRequest.helpers}}
-		</p>
-			
-		
-	</div>
-	<p>
-		<a href="{% url 'create_help_request' %}"><Button type="button" name="Help request" class="button">Hilfsanfrage</button></a>
-		<a href="{% url 'helper_list' %}"> <Button type="button" name="search helpers" class="button">Helfer suchen</button></a>
-		<a href="{% url 'index' %}" ><Button  type="button"name="edit" class="button">bearbeiten</button></a>
-	</p>
+<h1>Profilseite {{ user.first_name }} {{user.last_name}}</h1>
+<div>
+    <p>id: {{user.id}}</p>
+    <p>
+        Kontaktinformationen: <br>
+        E-mail: {{user.email}}<br>
+        Telefonnummer: {{user.phone_number}}<br>
+        Institution:
+        {{user.helpseeker.institution.name}}<br>
+        {{user.helpseeker.institution.location.city}}<br>
+        {{user.helpseeker.institution.comment}}
+    </p>
+    <p>
+        {{user.helpseeker.comment}}
+    </p>
+</div>
+<p>
+    <a href="{% url 'create_help_request'%}"><Button type="button" name="Help request" class="button">Hilfsanfrage</button></a>
+    <a href="{% url 'results'%}"> <Button type="button" name="search helpers" class="button">Helfer suchen</button></a>
+    <a href="{% url 'index'%}" ><Button  type="button"name="edit" class="button">bearbeiten</button></a>
+</p>
 
 {% endblock %}
