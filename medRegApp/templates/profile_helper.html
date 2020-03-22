@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 
 {% block title %}MedReg - Profil{% endblock %}
-
+{% block custom_css %}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
+{% endblock %}
 {% block content %}
 <h1>Profilseite von {{ user.first_name }} {{user.last_name}}</h1>
 <div>
@@ -57,6 +59,7 @@
             <td>{{user.comment}}</td>
         </tr>
     </table>
+    {% include "snippets/map.html" with location=user.helper.location.location %}
 </div>
 <p>
 	{% if login %}
