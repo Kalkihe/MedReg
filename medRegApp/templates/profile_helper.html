@@ -6,14 +6,14 @@
 	<h1>Profilseite von {{ user.first_name }} {{user.last_name}}</h1>
 	<div>
 		<p>Kontaktinformationen: <br>
-			E-mail: {{user.email}}<br>
+			E-Mail Adresse: {{user.email}}<br>
 			Telefonnummer: {{user.phone_number}}<br></p>
 		<p>
 			Wohnort: {{user.helper.location.city}}
 		</p>
 		<p>
 			Verfügbar?
-            {%  if user.helper.is_avialable %}
+            {%  if user.helper.is_available %}
             Ja
             {% else %}
             Nein
@@ -25,13 +25,17 @@
 		<p>
 			Qualifikationen:
             {% if user.helper.qualifications %}
-            Keine
+                <ul style="position:relative; left:10%">
+            {% for qualification in user.helper.qualifications.all %}
+                <li>{{ qualification.name }}</li>
+            {% endfor %}
+                </ul>
             {% else %}
-            {{user.helper.qualifications}}
+            Keine
             {% endif %}
 		</p>
 		<p>
-			Ausstrittsdatum aus der medizin Branche: {{user.helper.medical_leaving_date}}
+			Ausstrittsdatum aus der medizinischen Tätigkeit: {{user.helper.medical_leaving_date}}
 		</p>
 		<p>
 			Aktuelle Tätigkeit:
