@@ -17,7 +17,6 @@
         {% if help_request %}<th></th>{% endif %}
         <th>Nutzer</th>
         <th>{% trans "location" %} </th>
-        <th>{% trans 'is_available' %}</th>
         <th>{% trans 'qualifications' %}</th>
         <th>{% trans 'medical_leaving_date' %}</th>
         <th>{% trans 'current_occupation' %}</th>
@@ -29,7 +28,6 @@
         {% if help_request %}<td><input type="checkbox" name="helper-{{ entry.id }}" /></td>{% endif %}
         <td><a href="{% url 'view_profile' entry.user.id %}">{{ entry.user.first_name }} {{ entry.user.last_name }}</a></td>
         <td>{{ entry.location.city }}</td>
-        <td>{{ entry.is_available|yesno:"Ja,Nein" }}</td>
         <td>
             <ul>
             {% for qualification in entry.qualifications.all %}
