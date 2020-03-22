@@ -1,6 +1,7 @@
 from django.http import Http404, HttpResponse
 from django.shortcuts import redirect, render, reverse
 from django.views.generic import DetailView
+from django.contrib.auth import login
 
 from .forms import (CustomUserCreationForm, HelperCreationForm,
                     HelpRequestCreationForm, HelpSeekerCreationForm,
@@ -50,7 +51,8 @@ def register_helper(request):
             helper.location = location
             helper.save()
             helper_form.save_m2m()
-            return redirect(reverse('login'))
+            login(request, user)
+            return redirect(reverse('l/'))
     else:
         user_creation_form = CustomUserCreationForm()
         helper_form = HelperCreationForm()
@@ -82,6 +84,7 @@ def register_help_seeker(request):
             help_seeker = help_seeker_creation_form.save(commit=False)
             help_seeker.user = user
             help_seeker.save()
+            login(request, user)
             return redirect('/')
     else:
         user_creation_form = CustomUserCreationForm()
