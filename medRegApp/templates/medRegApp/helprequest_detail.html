@@ -15,6 +15,15 @@
 <p>
     {{ object.start_date|date }} - {{ object.end_date|date }}
 </p>
-    <a href="{% url 'helper_list' %}"><button type="button" name="search helpers" class="button">Helfer suchen</button></a>
+
+<p>
+    Helfer:<br>
+    <ul>
+        {% for helper in object.helpers.all %}
+        <li><a href="{% url 'view_profile' helper.user.id %}">{{ helper.user.first_name }} {{ helper.user.last_name }}</a></li>
+        {% endfor %}
+    </ul>
+</p>
 {% include "snippets/map.html" with location=object.location.location %}
+<a href="{% url 'helper_list' %}?from_hr={{ object.id }}"><button type="button" class="button">Helfer hinzufügen</button></a>
 {% endblock %}

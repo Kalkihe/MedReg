@@ -35,7 +35,7 @@
             </td>
         </tr>
         <tr>
-            <td>Ausstrittsdatum aus der medizin Branche</td>
+            <td>Austrittsdatum aus der medizin Branche</td>
             <td>{{user.helper.medical_leaving_date}}</td>
         </tr>
         <tr>
@@ -59,7 +59,9 @@
     </table>
 </div>
 <p>
+	{% if login %}
     <a href="{% url 'index' %}"> <Button action={% url 'index'%} type="button" name="edit" class="button">bearbeiten</button></a>
+	{% endif %}
 </p>
 
 {% endblock %}
