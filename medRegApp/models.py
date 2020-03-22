@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 from location_field.models.plain import PlainLocationField
 
 
@@ -30,13 +31,13 @@ class CustomUserManager(BaseUserManager):
 
 # Models
 class CustomUser(AbstractBaseUser):
-    email = models.EmailField(max_length=255, unique=True)
-    is_active = models.BooleanField(default=True)
-    is_admin = models.BooleanField(default=False)
-    phone_number = models.CharField(max_length=20)
-    comment = models.TextField(max_length=500, blank=True)
-    first_name = models.CharField(max_length=100)
-    last_name = models.CharField(max_length=100)
+    email = models.EmailField(_('email'), max_length=255, unique=True)
+    is_active = models.BooleanField(_('is_active'), default=True)
+    is_admin = models.BooleanField(_('is_admin'), default=False)
+    phone_number = models.CharField(_('phone_number'), max_length=20)
+    comment = models.TextField(_('comment'), max_length=500, blank=True)
+    first_name = models.CharField(_('first_name'), max_length=100)
+    last_name = models.CharField(_('last_name'), max_length=100)
 
     objects = CustomUserManager()
 
@@ -66,16 +67,16 @@ class CustomUser(AbstractBaseUser):
 
 
 class Qualification(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(_('name'), max_length=100)
 
     def __str__(self):
         return self.name
 
 
 class Location(models.Model):
-    city = models.CharField(max_length=255, default='Karlsruhe')
+    city = models.CharField(_('city'), max_length=255, default='Karlsruhe')
     location = PlainLocationField(based_fields=['city'],
-                                  default='49.0134, 8.4014')
+                                  default='49.0134, 8.4014', verbose_name=_('location'))
 
 
 class Helper(models.Model):
@@ -83,17 +84,20 @@ class Helper(models.Model):
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE
     )
     location = models.OneToOneField(Location, on_delete=models.CASCADE)
-    is_available = models.BooleanField(default=True)
-    qualifications = models.ManyToManyField(Qualification, blank=True)
-    medical_leaving_date = models.DateField()
-    current_occupation = models.CharField(max_length=100)
-    current_medical_occupation = models.BooleanField(default=False)
+    is_available = models.BooleanField(_('is_available'), default=True)
+    qualifications = models.ManyToManyField(
+        Qualification, blank=True, verbose_name=_('qualifications'))
+    medical_leaving_date = models.DateField(_('medical_leaving_date'))
+    current_occupation = models.CharField(
+        _('current_occupation'), max_length=100)
+    current_medical_occupation = models.BooleanField(
+        _('current_medical_occupation'), default=False)
 
 
 class Institution(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(_('name'), max_length=100)
     location = models.OneToOneField(Location, on_delete=models.CASCADE)
-    comment = models.TextField(max_length=500, blank=True)
+    comment = models.TextField(_('comment'), max_length=500, blank=True)
 
     def __str__(self):
         return self.name
@@ -107,10 +111,11 @@ class HelpSeeker(models.Model):
 
 
 class HelpRequest(models.Model):
-    description = models.TextField(max_length=500)
-    start_date = models.DateField()
-    end_date = models.DateField()
+    description = models.TextField(_('description'), max_length=500)
+    start_date = models.DateField(_('start_date'))
+    end_date = models.DateField(_('end_date'))
     location = models.OneToOneField(Location, on_delete=models.CASCADE)
-    required_helper_count = models.IntegerField()
-    helpers = models.ManyToManyField(Helper, blank=True)
+    required_helper_count = models.IntegerField(_('required_helper_count'))
+    helpers = models.ManyToManyField(
+        Helper, blank=True, verbose_name=_('helpers'))
     help_seeker = models.ForeignKey(HelpSeeker, on_delete=models.CASCADE)
