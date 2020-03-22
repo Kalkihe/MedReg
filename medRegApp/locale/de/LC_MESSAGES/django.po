@@ -20,80 +20,80 @@ msgstr ""
 
 #: models.py:34
 msgid "email"
-msgstr ""
+msgstr "E-Mail Adresse"
 
 #: models.py:35
 msgid "is_active"
-msgstr ""
+msgstr "ist aktiv"
 
 #: models.py:36
 msgid "is_admin"
-msgstr ""
+msgstr "ist Administrator"
 
 #: models.py:37
 msgid "phone_number"
-msgstr ""
+msgstr "Telefonnummer"
 
 #: models.py:38 models.py:100
 msgid "comment"
-msgstr ""
+msgstr "Kommentar"
 
 #: models.py:39
 msgid "first_name"
-msgstr ""
+msgstr "Vorname"
 
 #: models.py:40
 msgid "last_name"
-msgstr ""
+msgstr "Name"
 
 #: models.py:70 models.py:98
 msgid "name"
-msgstr ""
+msgstr "Name"
 
 #: models.py:77
 msgid "city"
-msgstr ""
+msgstr "Stadt"
 
 #: models.py:79
 msgid "location"
-msgstr "Ort"
+msgstr "Wohnort"
 
 #: models.py:87
 msgid "is_available"
-msgstr ""
+msgstr "Verfügbarkeit"
 
 #: models.py:89
 msgid "qualifications"
-msgstr ""
+msgstr "Qualifikationen"
 
 #: models.py:90
 msgid "medical_leaving_date"
-msgstr ""
+msgstr "Datum der letzten medizinischen Hauptbeschäftigung"
 
 #: models.py:92
 msgid "current_occupation"
-msgstr ""
+msgstr "Aktuelle Tätigkeit"
 
 #: models.py:94
 msgid "current_medical_occupation"
-msgstr ""
+msgstr "Aktuell in der Medizin ehrenamtlich oder teilberuflich tätig?"
 
 #: models.py:114
 msgid "description"
-msgstr ""
+msgstr "Beschreibung"
 
 #: models.py:115
 msgid "start_date"
-msgstr ""
+msgstr "Startdatum"
 
 #: models.py:116
 msgid "end_date"
-msgstr ""
+msgstr "Enddatum"
 
 #: models.py:118
 msgid "required_helper_count"
-msgstr ""
+msgstr "benötigte Helfer"
 
 #: models.py:120
 msgid "helpers"
-msgstr ""
+msgstr "Helfer"
