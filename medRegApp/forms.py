@@ -45,7 +45,7 @@ class HelpSeekerCreationForm(forms.ModelForm):
         fields = ('institution',)
 
 
-class InstituionCreationForm(forms.ModelForm):
+class InstitutionCreationForm(forms.ModelForm):
     class Meta:
         model = Institution
         fields = ('name', 'comment')

@@ -5,8 +5,8 @@ from django.views.generic import DetailView, ListView
 
 from .forms import (CustomUserCreationForm, HelperCreationForm,
                     HelpRequestCreationForm, HelpSeekerCreationForm,
-                    InstituionCreationForm, LocationCreationForm)
-from .models import CustomUser, Helper, HelpRequest, Institution
+                    InstitutionCreationForm, LocationCreationForm)
+from .models import CustomUser, Helper, HelpSeeker, HelpRequest, Institution
 
 # Create your views here.
 
@@ -113,7 +113,7 @@ def register_help_seeker(request):
 def create_institution(request):
     if request.method == 'POST':
         location_form = LocationCreationForm(request.POST)
-        institution_creation_form = InstituionCreationForm(request.POST)
+        institution_creation_form = InstitutionCreationForm(request.POST)
         if location_form.is_valid() and institution_creation_form.is_valid():
             institution = institution_creation_form.save(commit=False)
             location = location_form.save()
@@ -124,7 +124,7 @@ def create_institution(request):
             )
     else:
         location_form = LocationCreationForm()
-        institution_creation_form = InstituionCreationForm()
+        institution_creation_form = InstitutionCreationForm()
     return render(request, 'register.html', {
         'forms': [
             institution_creation_form,
