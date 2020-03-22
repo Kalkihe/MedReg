@@ -15,5 +15,6 @@
 <p>
     {{ object.start_date|date }} - {{ object.end_date|date }}
 </p>
+    <a href="{% url 'helper_list' %}"><button type="button" name="search helpers" class="button">Helfer suchen</button></a>
 {% include "snippets/map.html" with location=object.location.location %}
 {% endblock %}
