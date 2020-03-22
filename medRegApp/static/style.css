@@ -70,8 +70,11 @@ a:visited {
 }
 
 .button {
-    width: 150px;
-    height: 50px;
+    padding-right: 12px;
+    padding-left: 12px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+
     font-size: 18px;
     background-color: #000;
     color:#fff;
