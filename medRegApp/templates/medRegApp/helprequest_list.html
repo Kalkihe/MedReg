@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}MedReg - Ergebnisliste{% endblock %}
+
+{% block content %}
+{% load i18n %}
+{% if user.is_help_seeker %}
+<p>Hier siehst du deine eigenen Hilfeanfragen:</p>
+<table class="results-table" border="2">
+    <tr>
+        <th>#</th>
+        <th>{% trans 'start_date' %}</th>
+        <th>{% trans 'end_date' %}</th>
+        <th>{% trans 'required_helper_count' %}</th>
+        <th>{% trans 'city' %}</th>
+    </tr>
+
+    {% for entry in object_list %}
+    <tr>
+        <td><a href="{% url 'help_request_detail' entry.id %}">{{ forloop.counter }}</a></td>
+        <td>{{ entry.start_date }}</td>
+        <td>{{ entry.end_date }}</td>
+        <td>{{ entry.required_helper_count }}</td>
+        <td>{{ entry.location.city }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+Diese Seite hat nur für Hilfesuchende Inhalt.
+{% endif %}
+{% endblock %}
