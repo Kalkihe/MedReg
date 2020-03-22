@@ -40,9 +40,9 @@
 		
 	</div>
 	<p>
-		<Button type="Help request" name="Help request" class="button">Hilfsanfrage</button>
-		<Button type="search helpers" name="search helpers" class="button">Helfer suchen</button>
-		<Button type="edit" name="edit" class="button">bearbeiten</button>
+		<a href="{% url 'create_help_request'%}"><Button type="button" name="Help request" class="button">Hilfsanfrage</button></a>
+		<a href="{% url 'results'%}"> <Button type="button" name="search helpers" class="button">Helfer suchen</button></a>
+		<a href="{% url 'index'%}" ><Button  type="button"name="edit" class="button">bearbeiten</button></a>
 	</p>
 
 {% endblock %}
