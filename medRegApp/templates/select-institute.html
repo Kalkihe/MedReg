@@ -2,6 +2,20 @@
 
 {% block title %}Registrierung - Auswahl eines Instituts{% endblock %}
 
+{% block custom_js %}
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+    {% if institute_select_form.media %}
+        {{ institute_select_form.media }}
+    {% endif %}
+    {% if institution_creation_form.media %}
+        {{ institution_creation_form.media }}
+    {% endif %}
+    {% if location_form.media %}
+        {{ location_form.media }}
+    {% endif %}
+{% endblock %}
+
 {% block content %}
 <h1>Auswahl eines Instituts</h1>
 
@@ -9,17 +23,27 @@
     <div class="content-half institute-choose-left-content">
         <h2>Auswahl eines bestehenden Instituts</h2>
 
-        institute_select_form
-
         <form method="post" action="{% url 'select-institute' %}">
             {% csrf_token %}
-            {{ institute_select_form }}
-            <input class="button" type="submit" value="Select institute">
+            {{ institute_select_form.as_p }}
+            <input class="button" type="submit" value="Institution auswählen">
             <input type="hidden" name="next" value="{{ next }}">
         </form>
     </div>
     <div class="content-half institute-choose-right-content">
         <h2>Erstellen eines neuen Instituts</h2>
+
+        <form method="post" action="{% url 'create_institution' %}">
+            {% csrf_token %}
+            
+            {{ institution_creation_form.as_p }}
+            {{ location_form.as_p }}
+
+            <p>
+                <input class="button" type="submit" value="Institution erstellen und auswählen">
+            </p>
+            <input type="hidden" name="next" value="{{ next }}">
+        </form>
     </div>
 </div>
 

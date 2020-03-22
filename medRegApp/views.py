@@ -91,8 +91,13 @@ def select_institute(request):
     else:
         help_seeker_creation_form = HelpSeekerCreationForm()
 
+        location_form = LocationCreationForm()
+        institution_creation_form = InstitutionCreationForm()
+
     return render(request, 'select-institute.html', {
         'institute_select_form': help_seeker_creation_form,
+        'location_form': location_form,
+        'institution_creation_form': institution_creation_form
     })
 
 def register_help_seeker(request):
