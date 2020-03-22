@@ -1,6 +1,13 @@
 {% extends "base.html" %}
 
 {% block title %}Register{% endblock %}
+
+{% block custom_css %}
+    {% for css_path in stylesheets %}
+        <link rel="stylesheet" type="text/css" href="{{ css_path }}">
+    {% endfor %}
+{% endblock %}
+
 {% block custom_js %}
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 {% for form in forms %}
@@ -9,6 +16,7 @@
     {% endif %}
 {% endfor %}
 {% endblock %}
+
 {% block content %}
 <form action="{% url action %}" method="POST">
     {% csrf_token %}

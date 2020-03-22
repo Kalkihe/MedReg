@@ -67,6 +67,9 @@ def register_helper(request):
                 location_form,
             ],
             'action': 'register_helper',
+            'stylesheets': [
+                '/static/stylesheet-register-helper.css'
+            ]
         }
     )
 
@@ -93,6 +96,9 @@ def register_help_seeker(request):
                 help_seeker_creation_form,
             ],
             'action': 'register_help_seeker',
+            'stylesheets': [
+                '/static/stylesheet-register-helpseeker.css'
+            ]
         }
     )
 
@@ -117,7 +123,10 @@ def create_institution(request):
             institution_creation_form,
             location_form,
         ],
-        'action': 'create_institution'
+        'action': 'create_institution',
+        'stylesheets': [
+            '/static/stylesheet-create-institution.css'
+        ]
     })
 
 
@@ -147,7 +156,10 @@ def create_help_request(request):
             help_request_creation_form,
             location_form,
         ],
-        'action': 'create_help_request'
+        'action': 'create_help_request',
+        'stylesheets': [
+            '/static/stylesheet-create-helprequest.css'
+        ]
     })
 
 
