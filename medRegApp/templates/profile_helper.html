@@ -5,17 +5,17 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
 {% endblock %}
 {% block content %}
-<h1>Profilseite von {{ user.first_name }} {{user.last_name}}</h1>
+<h1>Profilseite von {{ object.first_name }} {{ object.last_name }}</h1>
 <div>
     <table class="table-vertical-top-align">
         <tr>
             <td>Wohnort</td>
-            <td>{{user.helper.location.city}}</td>
+            <td>{{ object.helper.location.city }}</td>
         </tr>
         <tr>
             <td>Verfügbar?</td>
             <td>
-                {%  if user.helper.is_available %}
+                {% if object.helper.is_available %}
                     Ja
                 {% else %}
                     Nein
@@ -25,9 +25,9 @@
         <tr>
             <td>Qualifikationen</td>
             <td>
-                {% if user.helper.qualifications %}
+                {% if object.helper.qualifications %}
                     <ul style="position:relative; left:10%">
-                {% for qualification in user.helper.qualifications.all %}
+                {% for qualification in object.helper.qualifications.all %}
                     <li>{{ qualification.name }}</li>
                 {% endfor %}
                     </ul>
@@ -38,16 +38,16 @@
         </tr>
         <tr>
             <td>Austrittsdatum aus der medizin Branche</td>
-            <td>{{user.helper.medical_leaving_date}}</td>
+            <td>{{ object.helper.medical_leaving_date }}</td>
         </tr>
         <tr>
             <td>Aktuelle Tätigkeit</td>
-            <td>{{user.helper.current_occupation}}</td>
+            <td>{{ object.helper.current_occupation }}</td>
         </tr>
         <tr>
             <td>Aktuell in der Medizin ehrenamtlich oder teilberuflich tätig?</td>
             <td>
-                {% if user.helper.current_medical_occupation %}
+                {% if object.helper.current_medical_occupation %}
                     Ja
                 {% else %}
                     Nein
@@ -56,7 +56,7 @@
         </tr>
         <tr>
             <td>Kommentar</td>
-            <td>{{user.comment}}</td>
+            <td>{{ object.comment }}</td>
         </tr>
     </table>
     {% include "snippets/map.html" with location=user.helper.location.location %}

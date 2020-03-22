@@ -3,28 +3,28 @@
 {% block title %}MedReg - Profil{% endblock %}
 
 {% block content %}
-<h1>Profilseite {{ user.first_name }} {{user.last_name}}</h1>
+<h1>Profilseite {{ object.first_name }} {{ object.last_name }}</h1>
 <div>
     <table class="table-vertical-top-align">
         <tr>
             <td>E-Mail Adresse</td>
-            <td>{{user.email}}</td>
+            <td>{{ object.email }}</td>
         </tr>
         <tr>
             <td>Telefonnummer</td>
-            <td>{{user.phone_number}}</td>
+            <td>{{ object.phone_number }}</td>
         </tr>
         <tr>
             <td>Institution</td>
             <td>
-                {{user.helpseeker.institution.name}}<br>
-                {{user.helpseeker.institution.location.city}}<br>
-                {{user.helpseeker.institution.comment}}
+                {{ object.helpseeker.institution.name }}<br>
+                {{ object.helpseeker.institution.location.city }}<br>
+                {{ object.helpseeker.institution.comment }}
             </td>
         </tr>
         <tr>
             <td colspan="2">
-                {{user.helpseeker.comment}}
+                {{ object.helpseeker.comment }}
             </td>
         </tr>
     </table>
