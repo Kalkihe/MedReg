@@ -1,5 +1,5 @@
 from django.contrib.auth import login
-from django.http import Http404, HttpResponse
+from django.http import Http404, HttpResponse, HttpResponseServerError
 from django.shortcuts import redirect, render, reverse
 from django.views.generic import DetailView, ListView
 
@@ -172,6 +172,30 @@ def create_help_request(request):
     })
 
 
+def add_helper(request):
+    try:
+        help_request = HelpRequest.objects.get(
+            pk=request.POST.get('help_request')
+        )
+    except HelpRequest.DoesNotExist:
+        raise Http404('Couldn\'t find help request')
+    else:
+        # find selected helpers
+        for key in request.POST.keys():
+            if not key.startswith('helper-'):
+                continue
+            helper_id = key.replace('helper-', '')
+            try:
+                helper = Helper.objects.get(pk=helper_id)
+            except Helper.DoesNotExist:
+                pass
+            else:
+                help_request.helpers.add(helper)
+        return redirect(
+            reverse('help_request_detail', args=(help_request.id,))
+        )
+
+
 class InstitutionDetailView(DetailView):
     model = Institution
 
@@ -182,6 +206,29 @@ class HelpRequestDetailView(DetailView):
 
 class HelperListView(ListView):
     model = Helper
+
+    def get_help_request(self):
+        try:
+            help_request_id = self.request.GET.get('from_hr')
+            help_request = HelpRequest.objects.get(pk=help_request_id)
+        except HelpRequest.DoesNotExist:
+            return None
+        else:
+            return help_request
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        help_request = self.get_help_request()
+        if help_request:
+            context['help_request'] = help_request
+        return context
+
+    def get_queryset(self):
+        help_request = self.get_help_request()
+        if help_request:
+            return Helper.objects.filter(is_available=True)
+        else:
+            return Helper.objects.filter(is_available=True)
 
 
 class HelpRequestListView(ListView):
