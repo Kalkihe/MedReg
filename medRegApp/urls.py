@@ -18,6 +18,8 @@ urlpatterns = [
     path('users/', include('django.contrib.auth.urls')),
     path('helprequests/create', views.create_help_request,
          name='create_help_request'),
+    path('helprequests/', views.HelpRequestListView.as_view(),
+         name='help_request_list'),
     path('helpers/', views.HelperListView.as_view(),
          name='helper_list'),
     path('register', views.register, name="register-selection")

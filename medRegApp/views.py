@@ -177,3 +177,14 @@ class HelpRequestDetailView(DetailView):
 
 class HelperListView(ListView):
     model = Helper
+
+
+class HelpRequestListView(ListView):
+    model = HelpRequest
+
+    def get_queryset(self):
+        if not self.request.user.is_help_seeker:
+            return HelpRequest.objects.none()
+        return HelpRequest.objects.filter(
+            help_seeker=self.request.user.helpseeker
+        )
