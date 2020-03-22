@@ -13,6 +13,7 @@ urlpatterns = [
          name='create_institution'),
     path('institutions/<int:pk>/', views.InstitutionDetailView.as_view(),
          name='institution_detail'),
+    path('institutions/select/', views.select_institute, name='select-institute'),
     path('helprequests/<int:pk>', views.HelpRequestDetailView.as_view(),
          name='help_request_detail'),
     path('users/', include('django.contrib.auth.urls')),

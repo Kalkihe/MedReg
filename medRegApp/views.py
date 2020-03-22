@@ -79,6 +79,11 @@ def register_helper(request):
         }
     )
 
+def select_institute(request):
+    if request.method == 'POST':
+        pass
+
+    return render(request, 'select-institute.html', {})
 
 def register_help_seeker(request):
     if request.method == 'POST':
@@ -91,7 +96,7 @@ def register_help_seeker(request):
             help_seeker.user = user
             help_seeker.save()
             login(request, user)
-            return redirect('/')
+            return redirect('/select-institute')
     else:
         user_creation_form = CustomUserCreationForm()
     return render(
