@@ -7,7 +7,7 @@ from django.views.generic import DetailView, ListView
 from .forms import (CustomUserCreationForm, HelperCreationForm,
                     HelpRequestCreationForm, HelpSeekerCreationForm,
                     InstitutionCreationForm, LocationCreationForm)
-from .models import CustomUser, Helper, HelpRequest, Institution
+from .models import CustomUser, HelpSeeker, Helper, HelpRequest, Institution
 from .utils import send_invite_mail
 # Create your views here.
 
@@ -81,22 +81,33 @@ def register_helper(request):
 
 def select_institute(request):
     if request.method == 'POST':
-        pass
+        help_seeker_creation_form = HelpSeekerCreationForm(request.POST)
 
-    return render(request, 'select-institute.html', {})
+        if help_seeker_creation_form.is_valid():
+            request.user.helpseeker.institution = help_seeker_creation_form.cleaned_data['institution']
+            request.user.helpseeker.save()
+
+            return redirect('/')
+    else:
+        help_seeker_creation_form = HelpSeekerCreationForm()
+
+    return render(request, 'select-institute.html', {
+        'institute_select_form': help_seeker_creation_form,
+    })
 
 def register_help_seeker(request):
     if request.method == 'POST':
         user_creation_form = CustomUserCreationForm(request.POST)
-        help_seeker_creation_form = HelpSeekerCreationForm(request.POST)
-        if user_creation_form.is_valid() \
-                and help_seeker_creation_form.is_valid():
+
+        if user_creation_form.is_valid():
             user = user_creation_form.save()
-            help_seeker = help_seeker_creation_form.save(commit=False)
+            help_seeker = HelpSeeker()
             help_seeker.user = user
             help_seeker.save()
+
             login(request, user)
-            return redirect('/select-institute')
+
+            return redirect('/institutions/select/')
     else:
         user_creation_form = CustomUserCreationForm()
     return render(

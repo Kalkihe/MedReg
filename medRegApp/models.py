@@ -107,7 +107,7 @@ class HelpSeeker(models.Model):
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE
     )
-    institution = models.ForeignKey(Institution, on_delete=models.CASCADE)
+    institution = models.ForeignKey(Institution, on_delete=models.CASCADE, blank=True, null=True)
 
 
 class HelpRequest(models.Model):

@@ -228,3 +228,33 @@ h1 {
 .card img {
     width: 100%;
 }
+
+.content-split-wrapper {
+    width: 100%;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-flow: row wrap
+}
+
+.content-half {
+    width: 50%;
+    box-sizing: border-box;
+
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+.institute-choose-left-content {
+    padding-right: 8px;
+    border-right-width: 1px;
+    border-right-style: solid;
+    border-right-color: black;
+}
+
+.institute-choose-right-content {
+    padding-left: 8px;
+    border-left-width: 1px;
+    border-left-style: solid;
+    border-left-color: black;
+}

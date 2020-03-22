@@ -5,4 +5,22 @@
 {% block content %}
 <h1>Auswahl eines Instituts</h1>
 
+<div class="content-split-wrapper">
+    <div class="content-half institute-choose-left-content">
+        <h2>Auswahl eines bestehenden Instituts</h2>
+
+        institute_select_form
+
+        <form method="post" action="{% url 'select-institute' %}">
+            {% csrf_token %}
+            {{ institute_select_form }}
+            <input class="button" type="submit" value="Select institute">
+            <input type="hidden" name="next" value="{{ next }}">
+        </form>
+    </div>
+    <div class="content-half institute-choose-right-content">
+        <h2>Erstellen eines neuen Instituts</h2>
+    </div>
+</div>
+
 {% endblock %}
